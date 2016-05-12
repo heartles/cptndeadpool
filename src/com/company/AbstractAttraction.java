@@ -9,8 +9,10 @@ public abstract class AbstractAttraction {
     public String getName() {
         return name;
     }
+    public int getHeight() {return height;}
 
     String name;
+    int height;
 
     protected AbstractAttraction()
     {
