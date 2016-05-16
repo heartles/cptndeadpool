@@ -30,6 +30,10 @@ public abstract class AbstractAttraction {
     protected void changeProfit(int newName) {
         profitPerRider = newName;
     }
+    // TODO(JJ): is it really a good idea to use integers to represent money?
+    // Even if we are tracking number of cents, that point isn't clearly conveyed in code.
+    // Potential solutions: use the built-in BigDecimal class, or abstract our representation
+    // of money into some other class.
 
     /**
      * @param riders the number of riders
