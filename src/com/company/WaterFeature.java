@@ -3,7 +3,11 @@ package com.company;
 /**
  * Created by jbmde on 5/16/2016.
  */
-public class WaterFeature extends AbstractAttraction {
+
+// TODO(JJ): our current idea of an AbstractAttraction doesn't mesh well with water features
+// A lot of the members of AbstractAttraction don't make a ton of sense when viewed in relation
+// with WaterFeatures.
+public class WaterFeature {
 
     int lifeguards;
     int patrons;
