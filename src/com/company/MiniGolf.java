@@ -13,10 +13,9 @@ public class MiniGolf extends AbstractAttraction {
         profitPerRider=newProfit;
         costToRun = newCost;
     }
-    public void renovateCourse(int numHoles, int newsDifficulty, String newCourseName){
+    public void renovateCourse(int numHoles, int newsDifficulty){
         holes = numHoles;
         diff = newsDifficulty;
-        name = newCourseName;
     }
     protected int rideAttraction(int riders){
         return (riders*profitPerRider)-costToRun;
