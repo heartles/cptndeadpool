@@ -18,6 +18,19 @@ public abstract class AbstractAttraction {
     int height;
     int costToRun;
 
+    protected void changeName(String newName) {
+        name = newName;
+    }
+    protected void changeHeight(int newName) {
+        height = newName;
+    }
+    protected void changeCost(int newName) {
+        costToRun = newName;
+    }
+    protected void changeProfit(int newName) {
+        profitPerRider = newName;
+    }
+
     /**
      * @param riders the number of riders
      * @return the profit of riding the ride
