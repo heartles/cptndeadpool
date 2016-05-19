@@ -31,7 +31,7 @@ public class Rollercoaster extends AbstractAttraction {
             BigDecimal profit;
             profit = profitPerRider.multiply(BigDecimal.valueOf(riders));
             profit = profit.subtract(costToRun);
-            return profit.round(new MathContext(((int) profit.doubleValue())+2));
+            return profit.round(new MathContext(String.valueOf(((int) profit.doubleValue())).length()+2));
 
         }
     }
@@ -45,7 +45,7 @@ public class Rollercoaster extends AbstractAttraction {
                 profit = profit.add(rideAttraction(maxRiders/2));
                 totalTime += time+7;
             }
-            return profit.round(new MathContext(((int) profit.doubleValue())+2));
+            return profit.round(new MathContext(String.valueOf(((int) profit.doubleValue())).length()+2));
         }
     }
 
@@ -73,7 +73,7 @@ public class Rollercoaster extends AbstractAttraction {
     public String printerFromDay(){
         BigDecimal thing = averageHourlyProfit().multiply(BigDecimal.valueOf(HOURS_OF_OPERATION_PER_DAY));
         if (maxForce < 5) {
-            if (maxForce < 4) return "This coaster earned you $" + (thing.round(new MathContext(((int) thing.doubleValue())+2))) + " in one business day";
+            if (maxForce < 4) return "This coaster earned you $" + (thing.round(new MathContext(String.valueOf(((int) thing.doubleValue())).length()+2))) + " in one business day";
             else return "Your roller coaster is potentially dangerous. No profit.";
         }
         else return "Your roller coaster will literally kill people, please don't have people ride this monstrosity";
