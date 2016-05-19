@@ -11,7 +11,6 @@ public class Rollercoaster extends AbstractAttraction {
     private double maxSpeed; //Miles per hour
     private double maxForce; //In G's
     private double time; // In minutes
-    private final BigDecimal thing = averageHourlyProfit().multiply(BigDecimal.valueOf(HOURS_OF_OPERATION_PER_DAY));
 
     public Rollercoaster(int seats, int m_height, double speed, double force, double length, double price, double costtorun){
         maxRiders = seats;
@@ -72,6 +71,7 @@ public class Rollercoaster extends AbstractAttraction {
     }
 
     public String printerFromDay(){
+        BigDecimal thing = averageHourlyProfit().multiply(BigDecimal.valueOf(HOURS_OF_OPERATION_PER_DAY));
         if (maxForce < 5) {
             if (maxForce < 4) return "This coaster earned you $" + (thing.round(new MathContext(((int) thing.doubleValue())+2))) + " in one business day";
             else return "Your roller coaster is potentially dangerous. No profit.";
