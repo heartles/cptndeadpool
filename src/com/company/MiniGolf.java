@@ -22,7 +22,7 @@ public class MiniGolf extends AbstractAttraction {
     }
     protected BigDecimal rideAttraction(int riders){
         BigDecimal thing = profitPerRider.multiply(BigDecimal.valueOf(riders)).subtract(costToRun);
-        return thing.round(new MathContext(((int) thing.doubleValue())+2));
+        return thing.round(new MathContext(String.valueOf(((int) thing.doubleValue()))+2));
     }
 
 }
