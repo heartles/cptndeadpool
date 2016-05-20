@@ -17,8 +17,8 @@ public class Rollercoaster extends AbstractAttraction {
         name = "Roller Coaster";
         maxForce = force;
         time = length;
-        profitPerRider = BigDecimal.valueOf(price);
-        costToRun = BigDecimal.valueOf(costtorun);
+        profitPerRider = BigDecimal.valueOf(price).round(new MathContext(String.valueOf(((int) price))+2));
+        costToRun = BigDecimal.valueOf(costtorun).round(new MathContext(String.valueOf(((int) costtorun))+2));
     }
 
     protected BigDecimal rideAttraction(int riders){
