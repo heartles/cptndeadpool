@@ -13,8 +13,8 @@ public class MiniGolf extends AbstractAttraction {
         holes = numHoles;
         diff = newsDifficulty;
         name = newCourseName;
-        profitPerRider=BigDecimal.valueOf(newProfit);
-        costToRun = BigDecimal.valueOf(newCost);
+        profitPerRider=BigDecimal.valueOf(newProfit).round(new MathContext(String.valueOf(((int) newProfit))+2));
+        costToRun = BigDecimal.valueOf(newCost).round(new MathContext(String.valueOf(((int) newCost))+2));
     }
     public void renovateCourse(int numHoles, int newsDifficulty){
         holes = numHoles;
