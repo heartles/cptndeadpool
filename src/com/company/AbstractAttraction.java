@@ -9,38 +9,36 @@ public abstract class AbstractAttraction {
     public String getName() {
         return name;
     }
-    public int getHeight() {return height;}
-    public int getProfit() {return profitPerRider;}
-    public int getCost() {return costToRun;}
+    public BigDecimal getHeight() {return height;}
+    public BigDecimal getProfit() {return profitPerRider;}
+    public BigDecimal getCost() {return costToRun;}
 
-    int profitPerRider;
+    BigDecimal profitPerRider;
     String name;
-    int height;
-    int costToRun;
+    BigDecimal height;
+    BigDecimal costToRun;
 
     protected void changeName(String newName) {
         name = newName;
     }
-    protected void changeHeight(int newName) {
+    protected void changeHeight(BigDecimal newName) {
         height = newName;
     }
-    protected void changeCost(int newName) {
+    protected void changeCost(BigDecimal newName) {
         costToRun = newName;
     }
-    protected void changeProfit(int newName) {
+    protected void changeProfit(BigDecimal newName) {
         profitPerRider = newName;
     }
     // TODO(JJ): is it really a good idea to use integers to represent money?
-    // Even if we are tracking number of cents, that point isn't clearly conveyed in code.
-    // Potential solutions: use the built-in BigDecimal class, or abstract our representation
-    // of money into some other class.
+    //use the built-in BigDecimal class
 
     /**
      * @param riders the number of riders
      * @return the profit of riding the ride
      */
 
-    abstract protected int rideAttraction(int riders);
+    abstract protected BigDecimal rideAttraction(BigDecimal riders);
 
     protected AbstractAttraction()
     {
