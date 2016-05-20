@@ -8,14 +8,12 @@ import java.math.MathContext;
  */
 public class Rollercoaster extends AbstractAttraction {
     private int maxRiders;
-    private double maxSpeed; //Miles per hour
     private double maxForce; //In G's
     private double time; // In minutes
 
-    public Rollercoaster(int seats, int m_height, double speed, double force, double length, double price, double costtorun){
+    public Rollercoaster(int seats, int m_height, double force, double length, double price, double costtorun){
         maxRiders = seats;
         height = m_height;
-        maxSpeed= speed;
         name = "Roller Coaster";
         maxForce = force;
         time = length;
