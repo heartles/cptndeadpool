@@ -33,7 +33,6 @@ public abstract class AbstractAttraction {
     protected void changeProfit(double newName) {
         profitPerRider = BigDecimal.valueOf(newName).round(new MathContext(String.valueOf(((int) newName))+2));
     }
-    // TODO(JJ): is it really a good idea to use integers to represent money?
     //use the built-in BigDecimal class
 
     /**
