@@ -1,6 +1,7 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 /**
  * Created by Justin on 5/12/2016.
@@ -10,13 +11,15 @@ public abstract class AbstractAttraction {
         return name;
     }
     public int getHeight() {return height;}
-    public int getProfit() {return profitPerRider;}
-    public int getCost() {return costToRun;}
+    public BigDecimal getProfit() {return profitPerRider;}
+    public BigDecimal getCost() {return costToRun;}
 
-    int profitPerRider;
+    BigDecimal profitPerRider;
     String name;
     int height;
-    int costToRun;
+    BigDecimal costToRun; //Per ride
+
+    protected final int HOURS_OF_OPERATION_PER_DAY = 9;
 
     protected void changeName(String newName) {
         name = newName;
@@ -24,23 +27,21 @@ public abstract class AbstractAttraction {
     protected void changeHeight(int newName) {
         height = newName;
     }
-    protected void changeCost(int newName) {
-        costToRun = newName;
+    protected void changeCost(double newName) {
+        costToRun = BigDecimal.valueOf(newName).round(new MathContext(String.valueOf(((int) newName))+2));
     }
-    protected void changeProfit(int newName) {
-        profitPerRider = newName;
+    protected void changeProfit(double newName) {
+        profitPerRider = BigDecimal.valueOf(newName).round(new MathContext(String.valueOf(((int) newName))+2));
     }
     // TODO(JJ): is it really a good idea to use integers to represent money?
-    // Even if we are tracking number of cents, that point isn't clearly conveyed in code.
-    // Potential solutions: use the built-in BigDecimal class, or abstract our representation
-    // of money into some other class.
+    //use the built-in BigDecimal class
 
     /**
      * @param riders the number of riders
      * @return the profit of riding the ride
      */
 
-    abstract protected int rideAttraction(int riders);
+    abstract protected BigDecimal rideAttraction(int riders);
 
     protected AbstractAttraction()
     {
