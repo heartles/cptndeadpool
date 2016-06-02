@@ -6,8 +6,11 @@ import java.util.ArrayList;
  * Created by macgm120 on 5/20/2016.
  */
 public class BurgerPlace extends AbstractRestaurant {
-    public ArrayList<Food> sodas= new ArrayList<>();
-
+    public BurgerPlace(ArrayList<Food> nMenu, ArrayList<Food> nSodas){
+        menu=nMenu;
+        sodas=nSodas;
+    }
+    private ArrayList<Food> sodas= new ArrayList<>();
     /**
      * makes a list of the food and sodas, with the food first
      * @return a list with both the food and sodas
