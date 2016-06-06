@@ -2,6 +2,7 @@ package com.company;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 
 /**
  * Created by Justin on 5/12/2016.
@@ -28,12 +29,20 @@ public abstract class AbstractAttraction {
         height = newName;
     }
     protected void changeCost(double newName) {
-        costToRun = BigDecimal.valueOf(newName).round(new MathContext(String.valueOf(((int) newName))+2));
+        costToRun = roundToTwo(newName);
     }
     protected void changeProfit(double newName) {
-        profitPerRider = BigDecimal.valueOf(newName).round(new MathContext(String.valueOf(((int) newName))+2));
+        profitPerRider = roundToTwo(newName);
     }
-    //use the built-in BigDecimal class
+
+    //Rounds to two decimal places
+    public static BigDecimal roundToTwo(double moneyValue) {
+        return BigDecimal.valueOf(moneyValue).setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public static BigDecimal roundToTwo(BigDecimal moneyValue) {
+        return moneyValue.setScale(2, RoundingMode.HALF_UP);
+    }
 
     /**
      * @param riders the number of riders

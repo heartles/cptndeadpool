@@ -14,7 +14,7 @@ public class FerrisWheel extends AbstractAttraction {
         costToRun=newCost;
     }
     protected BigDecimal rideAttraction(int riders){
-        BigDecimal thing = profitPerRider.multiply(BigDecimal.valueOf(riders)).subtract(costToRun);
-        return thing.round(new MathContext(String.valueOf(((int) thing.doubleValue()))+2));
+        BigDecimal profit = profitPerRider.multiply(BigDecimal.valueOf(riders)).subtract(costToRun);
+        return roundToTwo(profit);
     }
 }
