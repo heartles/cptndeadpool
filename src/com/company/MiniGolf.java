@@ -9,20 +9,22 @@ import java.math.MathContext;
 public class MiniGolf extends AbstractAttraction {
     private int holes;//number of holes in the course
     private int diff;//course difficulty on a 1-10 scale
-    public MiniGolf(int numHoles, int newsDifficulty, String newCourseName, double newProfit,double newCost) {
+    public MiniGolf(int numHoles, int newDifficulty, String newCourseName, double newProfit, double newCost) {
         holes = numHoles;
-        diff = newsDifficulty;
+        diff = newDifficulty;
         name = newCourseName;
-        profitPerRider=BigDecimal.valueOf(newProfit).round(new MathContext(String.valueOf(((int) newProfit))+2));
-        costToRun = BigDecimal.valueOf(newCost).round(new MathContext(String.valueOf(((int) newCost))+2));
+        profitPerRider = roundToTwo(newProfit);
+        costToRun = roundToTwo(newProfit);
     }
+
     public void renovateCourse(int numHoles, int newsDifficulty){
         holes = numHoles;
         diff = newsDifficulty;
     }
+
     protected BigDecimal rideAttraction(int riders){
         BigDecimal thing = profitPerRider.multiply(BigDecimal.valueOf(riders)).subtract(costToRun);
-        return thing.round(new MathContext(String.valueOf(((int) thing.doubleValue()))+2));
+        return roundToTwo(thing);
     }
 
 }
