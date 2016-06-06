@@ -8,8 +8,36 @@ public class Main {
     public static void main(String[] args) {
         roundTest();
         waterSlideTest();
+        coasterTest();
     }
 
+    public static void coasterTest(){
+        Rollercoaster c1 = new Rollercoaster(30, 400, 3.25, 8, 5.00,25.00);
+        Rollercoaster c2 = new Rollercoaster(40, 550, 3.75, 10, 6.50,30.00);
+        Rollercoaster c3 = new Rollercoaster(20, 350, 6, 5, 4.00,20.00);
+
+        System.out.println(c1.printerFromRide(30));
+        System.out.println(c1.printerFromRide(17));
+        System.out.println(c1.printerFromRide(73));
+
+        System.out.println(c2.printerFromRide(40));
+        System.out.println(c2.printerFromRide(33));
+        System.out.println(c1.printerFromRide(55));
+
+        System.out.println(c3.printerFromRide(20));
+        System.out.println(c3.printerFromRide(11));
+        System.out.println(c1.printerFromRide(35));
+
+        System.out.println(c1.printerFromHour());
+        System.out.println(c2.printerFromHour());
+        System.out.println(c3.printerFromHour());
+
+        System.out.println(c1.printerFromDay());
+        System.out.println(c2.printerFromDay());
+        System.out.println(c3.printerFromDay());
+
+
+    }
 
     public static void roundTest() {
         System.out.println("roundToTwo Test: ");

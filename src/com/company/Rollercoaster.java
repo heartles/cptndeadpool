@@ -2,9 +2,10 @@ package com.company;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 
 /**
- * Created by macgm120 on 5/16/2016.
+ * Created by HighBaritone on 5/16/2016.
  */
 public class Rollercoaster extends AbstractAttraction {
     private int maxRiders;
@@ -17,8 +18,8 @@ public class Rollercoaster extends AbstractAttraction {
         name = "Roller Coaster";
         maxForce = force;
         time = length;
-        profitPerRider = BigDecimal.valueOf(price).round(new MathContext(String.valueOf(((int) price))+2));
-        costToRun = BigDecimal.valueOf(costtorun).round(new MathContext(String.valueOf(((int) costtorun))+2));
+        profitPerRider = roundToTwo(price);
+        costToRun = roundToTwo(costtorun);
     }
     public void changeSeats(int nSeats){maxRiders=nSeats;}
     public void changeMaxForce(double nForce){maxForce = nForce;}
@@ -32,7 +33,7 @@ public class Rollercoaster extends AbstractAttraction {
             BigDecimal profit;
             profit = profitPerRider.multiply(BigDecimal.valueOf(riders));
             profit = profit.subtract(costToRun);
-            return profit.round(new MathContext(String.valueOf(((int) profit.doubleValue())).length()+2));
+            return roundToTwo(profit);
 
         }
     }
@@ -46,7 +47,7 @@ public class Rollercoaster extends AbstractAttraction {
                 profit = profit.add(rideAttraction(maxRiders/2));
                 totalTime += time+7;
             }
-            return profit.round(new MathContext(String.valueOf(((int) profit.doubleValue())).length()+2));
+            return roundToTwo(profit);
         }
     }
 
@@ -57,27 +58,23 @@ public class Rollercoaster extends AbstractAttraction {
     }
 
     public String printerFromRide(int riders) {
-        if (maxForce < 5) {
-            if (maxForce < 4) {
-                if (willRide(riders) == rideAttraction(riders).doubleValue() > 0) return "You gained $" + rideAttraction(riders) + " from this ride.";
-                else return "Oh no! There are too many people want to ride this coaster and the operator has a melt down from being overstressed! No profit made.";}
-            else return "Your roller coaster is potentially dangerous. No profit.";
-        }
-        else return "Your roller coaster will literally kill people, please don't have people ride this monstrosity";
+        if (maxForce > 5) {return "Your roller coaster will literally kill people, please don't have people ride this monstrosity";}
+        else if (maxForce > 4) {return "Your roller coaster is potentially dangerous. No profit.";}
+        else if (!willRide(riders) && rideAttraction(riders).doubleValue() == 0) return "Oh no! There are too many people want to ride this coaster and the operator has a melt down from being overstressed! No profit made.";
+        else return "You gained $" + rideAttraction(riders) + " from this ride.";
     }
 
     public String printerFromHour(){
-        if (maxForce < 4) return "This coaster earned you $" + averageHourlyProfit() + " in one hour";
-        else return "Your roller coaster will literally kill people, please don't have people ride this monstrosity";
+        if (maxForce > 5) {return "Your roller coaster will literally kill people, please don't have people ride this monstrosity";}
+        else if (maxForce > 4) {return "Your roller coaster is potentially dangerous. No profit.";}
+        else return "This coaster earned you $" + averageHourlyProfit() + " in one hour";
     }
 
     public String printerFromDay(){
         BigDecimal thing = averageHourlyProfit().multiply(BigDecimal.valueOf(HOURS_OF_OPERATION_PER_DAY));
-        if (maxForce < 5) {
-            if (maxForce < 4) return "This coaster earned you $" + (thing.round(new MathContext(String.valueOf(((int) thing.doubleValue())).length()+2))) + " in one business day";
-            else return "Your roller coaster is potentially dangerous. No profit.";
-        }
-        else return "Your roller coaster will literally kill people, please don't have people ride this monstrosity";
+        if (maxForce > 5) {return "Your roller coaster will literally kill people, please don't have people ride this monstrosity";}
+        else if (maxForce > 4) {return "Your roller coaster is potentially dangerous. No profit.";}
+        else return "This coaster earned you $" + roundToTwo(thing) + " in one business day";
     }
 
 }
